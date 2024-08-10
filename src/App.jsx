@@ -1,5 +1,9 @@
-function App() {
-  return <>My App</>;
-}
+import NotesPage from "./pages/NotesPage";
 
-export default App;
+function App() {
+  return (
+    <div id="app">
+      <NotesPage />
+    </div>
+  );
+}
