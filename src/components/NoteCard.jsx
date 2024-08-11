@@ -22,6 +22,13 @@ const NoteCard = ({ note }) => {
     current.style.height = current.scrollHeight + "px"; // Set the new height
   }
 
+  const mouseDown = (e) => {
+    mouseStartPos.x = e.clientX;
+    mouseStartPos.y = e.clientY;
+
+    document.addEventListener("mousemove", mouseMove);
+  };
+
   return (
     <div
       ref={cardRef}
