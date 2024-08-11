@@ -3,8 +3,12 @@ import Trash from "../icons/Trash";
 
 const NoteCard = ({ note }) => {
   const body = JSON.parse(note.body);
-  const position = JSON.parse(note.position);
+  // const position = JSON.parse(note.position);
+  const [position, setPositon] = useState(JSON.parse(note.position));
   const colors = JSON.parse(note.colors);
+
+  let mouseStartPos = { x: 0, y: 0 };
+  const cardRef = useRef(null);
 
   const textAreaRef = useRef(null);
 
@@ -20,6 +24,7 @@ const NoteCard = ({ note }) => {
 
   return (
     <div
+      ref={cardRef}
       className="card"
       style={{
         backgroundColor: colors.colorBody,
