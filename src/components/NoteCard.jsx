@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import Trash from "../icons/Trash";
+import { setNewOffset } from "../utils";
 
 const NoteCard = ({ note }) => {
   const body = JSON.parse(note.body);
@@ -41,11 +42,10 @@ const NoteCard = ({ note }) => {
     mouseStartPos.x = e.clientX;
     mouseStartPos.y = e.clientY;
 
+    const newPosition = setNewOffset(cardRef.current, mouseMoveDir);
+
     //3 - Update card top and left position.
-    setPositon({
-      x: cardRef.current.offsetLeft - mouseMoveDir.x,
-      y: cardRef.current.offsetTop - mouseMoveDir.y,
-    });
+    setPositon(newPosition);
   };
 
   const mouseUp = () => {
