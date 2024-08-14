@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { db } from "../appwrite/databases";
 import Trash from "../icons/Trash";
+import Spinner from "../icons/Spinner";
 import { setNewOffset, autoGrow, setZIndex, bodyParser } from "../utils";
 
 const NoteCard = ({ note }) => {
@@ -98,6 +99,7 @@ const NoteCard = ({ note }) => {
         <Trash />
         {saving && (
           <div className="card-saving">
+            <Spinner color={colors.colorText} />
             <span style={{ color: colors.colorText }}>Saving...</span>
           </div>
         )}
