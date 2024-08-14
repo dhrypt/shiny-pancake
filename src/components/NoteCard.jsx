@@ -54,6 +54,7 @@ const NoteCard = ({ note }) => {
     } catch (error) {
       console.error(error);
     }
+    setSaving(false);
   };
 
   const handleKeyUp = async () => {
