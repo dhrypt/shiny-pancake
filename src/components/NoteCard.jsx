@@ -1,10 +1,10 @@
 import { useRef, useEffect, useState } from "react";
 import { db } from "../appwrite/databases";
-import Trash from "../icons/Trash";
+import DeleteButton from "./DeleteButton";
 import Spinner from "../icons/Spinner";
 import { setNewOffset, autoGrow, setZIndex, bodyParser } from "../utils";
 
-const NoteCard = ({ note }) => {
+const NoteCard = ({ note, setNotes }) => {
   const [saving, setSaving] = useState(false);
   const keyUpTimer = useRef(null);
   const body = bodyParser(note.body);
@@ -96,7 +96,7 @@ const NoteCard = ({ note }) => {
         className="card-header"
         style={{ backgroundColor: colors.colorHeader }}
       >
-        <Trash />
+        <DeleteButton noteId={note.$id} setNotes={setNotes} />
         {saving && (
           <div className="card-saving">
             <Spinner color={colors.colorText} />
