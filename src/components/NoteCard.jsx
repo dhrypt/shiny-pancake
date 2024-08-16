@@ -21,13 +21,16 @@ const NoteCard = ({ note, setNotes }) => {
   }, []);
 
   const mouseDown = (e) => {
-    mouseStartPos.x = e.clientX;
-    mouseStartPos.y = e.clientY;
+    if (e.target.className === "card-header") {
+      console.log("Mouse down was triggered");
+      mouseStartPos.x = e.clientX;
+      mouseStartPos.y = e.clientY;
 
-    document.addEventListener("mousemove", mouseMove);
-    document.addEventListener("mouseup", mouseUp);
+      document.addEventListener("mousemove", mouseMove);
+      document.addEventListener("mouseup", mouseUp);
 
-    setZIndex(cardRef.current);
+      setZIndex(cardRef.current);
+    }
   };
 
   const mouseMove = (e) => {
@@ -74,6 +77,7 @@ const NoteCard = ({ note, setNotes }) => {
   };
 
   const mouseUp = () => {
+    console.log("Mouse up: saving...");
     document.removeEventListener("mousemove", mouseMove);
     document.removeEventListener("mouseup", mouseUp);
 
