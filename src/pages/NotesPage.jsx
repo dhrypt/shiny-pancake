@@ -18,7 +18,7 @@ const NotesPage = () => {
   return (
     <div>
       {notes.map((note) => (
-        <NoteCard key={note.$id} note={note} setNotes={setNotes} />
+        <NoteCard key={note.$id} note={note} />
       ))}
     </div>
   );
