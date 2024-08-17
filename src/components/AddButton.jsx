@@ -7,3 +7,5 @@ const AddButton = () => {
     </div>
   );
 };
+
+export default AddButton;
