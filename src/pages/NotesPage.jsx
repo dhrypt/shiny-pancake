@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-// import { fakeData as notes } from "../assets/Fakedata";
+import { useEffect, useContext } from "react";
 import { db } from "../appwrite/databases";
 import NoteCard from "../components/NoteCard";
+import { NoteContext } from "../context/NoteContext";
 
 const NotesPage = () => {
-  const [notes, setNotes] = useState([]);
+  const { notes, setNotes } = useContext(NoteContext);
 
   useEffect(() => {
     init();
