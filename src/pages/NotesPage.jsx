@@ -2,6 +2,7 @@ import { useEffect, useContext } from "react";
 import { db } from "../appwrite/databases";
 import NoteCard from "../components/NoteCard";
 import { NoteContext } from "../context/NoteContext";
+import Controls from "../components/Controls";
 
 const NotesPage = () => {
   const { notes, setNotes } = useContext(NoteContext);
@@ -20,6 +21,7 @@ const NotesPage = () => {
       {notes.map((note) => (
         <NoteCard key={note.$id} note={note} />
       ))}
+      <Controls />
     </div>
   );
 };
