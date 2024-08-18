@@ -4,7 +4,7 @@ import DeleteButton from "./DeleteButton";
 import Spinner from "../icons/Spinner";
 import { setNewOffset, autoGrow, setZIndex, bodyParser } from "../utils";
 
-const NoteCard = ({ note, setNotes }) => {
+const NoteCard = ({ note }) => {
   const [saving, setSaving] = useState(false);
   const keyUpTimer = useRef(null);
   const body = bodyParser(note.body);
