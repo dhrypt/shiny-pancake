@@ -1,12 +1,16 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useContext } from "react";
 import { db } from "../appwrite/databases";
 import DeleteButton from "./DeleteButton";
 import Spinner from "../icons/Spinner";
 import { setNewOffset, autoGrow, setZIndex, bodyParser } from "../utils";
+import { NoteContext } from "../context/NoteContext";
 
 const NoteCard = ({ note }) => {
   const [saving, setSaving] = useState(false);
   const keyUpTimer = useRef(null);
+
+  const { setSelectedNote } = useContext(NoteContext);
+
   const body = bodyParser(note.body);
   const [position, setPositon] = useState(JSON.parse(note.position));
   const colors = JSON.parse(note.colors);
@@ -31,6 +35,7 @@ const NoteCard = ({ note }) => {
       document.addEventListener("mouseup", mouseUp);
 
       setZIndex(cardRef.current);
+      setSelectedNote(note);
     }
   };
 
@@ -121,6 +126,7 @@ const NoteCard = ({ note }) => {
           }}
           onFocus={() => {
             setZIndex(cardRef.current);
+            setSelectedNote(note);
           }}
         ></textarea>
       </div>

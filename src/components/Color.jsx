@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NoteContext } from "../context/NoteContext";
 
 function Color({ color }) {
+  const { selectedNote } = useContext(NoteContext);
   const changeColor = () => {
-    console.log(color);
+    console.log(selectedNote);
   };
   return (
     <div
